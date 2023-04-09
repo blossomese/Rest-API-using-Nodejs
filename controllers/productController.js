@@ -36,3 +36,12 @@ const getOneProduct = async(req, res) => {
     let products = await Product.findOne({ where: {id: id}})
     res.status(200).send(products)
 }
+
+
+//4. update products
+
+const updateProduct = async(req, res) => {
+    let id = req.params.id
+    const Product = await Product.update(req.body, { where: {id: id}})
+    res.status(200).send(Product)
+}
