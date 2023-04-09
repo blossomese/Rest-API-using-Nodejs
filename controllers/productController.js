@@ -38,10 +38,23 @@ const getOneProduct = async(req, res) => {
 }
 
 
-//4. update products
+//4. Update products
 
 const updateProduct = async(req, res) => {
     let id = req.params.id
     const Product = await Product.update(req.body, { where: {id: id}})
     res.status(200).send(Product)
+}
+
+//5. Delete product by id
+
+const deleteProduct = async (req, res) => {
+    let id = req.params.id
+await Product.destroy({ where: {id: id}})
+    res.status(200).send(`product is deleted!`)
+}
+
+module.exports = {
+    addProduct, getAllProducts, getOneProduct, updateProduct,
+    deleteProduct
 }
